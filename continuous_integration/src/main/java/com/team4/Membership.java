@@ -30,4 +30,8 @@ public class Membership{
         }
         return temp;
     }
+
+    public void setNumberOfMembers(int numero){
+        this.numeroDeMiembros = numero;
+    }
 }

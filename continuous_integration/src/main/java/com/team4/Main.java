@@ -17,6 +17,11 @@ public class Main {
         beneficiosPremium.add("Descuentos exclusivos en servicios");
         beneficiosFamilia.add("Asistencia personalizada");
         beneficiosFamilia.add("Acceso gratuito para familiares adicionales");
+
+        BasicMembership basicMembership = new BasicMembership(20, beneficiosBasic, 0);
+        PremiunMembership premiumMembership = new PremiunMembership(40, beneficiosPremium, 0);
+        FamilyMembership basicMembership = new FamilyMembership(60, beneficiosFamily, 0);
+        
         Scanner scanner = new Scanner(System.in);
         int choice;
 
@@ -33,8 +38,11 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    System.out.println("You chose Option 1");
+                    System.out.println("¿Cuántos se van a registrar?");
+                    int numero = nextInt();
+
                     // Add code for Option 1 functionality
+
                     break;
                 case 2:
                     System.out.println("You chose Option 2");
