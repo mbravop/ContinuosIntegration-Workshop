@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class FamilyMembership extends Membership{
     
-    public FamilyMembership(int costo, ArrayList<String> beneficios) {
-        super(costo, beneficios);
-        
+    public FamilyMembership(int costo, ArrayList<String> beneficios, int numeroDeMiembros) {
+        super(costo, beneficios, numeroDeMiembros);
+
     }
 
 
