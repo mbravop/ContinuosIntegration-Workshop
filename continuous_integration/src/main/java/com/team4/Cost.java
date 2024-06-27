@@ -4,13 +4,13 @@ public class Cost {
     
     Integer discount;
     Double price;
-
+/* 
     public Cost(Integer discount, Double price){
 
         this.price=price;
         if(price)
 
     }
-
+*/
 
 }

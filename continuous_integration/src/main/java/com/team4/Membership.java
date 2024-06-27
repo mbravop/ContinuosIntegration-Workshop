@@ -13,25 +13,21 @@ public class Membership{
         this.numeroDeMiembros = numeroDeMiembros;
     }
 
-    public Membership CustomizeFeatures(AdditionalFeatures af){
-        Membership temp = new Membership(costo, beneficios,numeroDeMiembros);
-        temp.costo = this.costo;
-        temp.beneficios = this.beneficios;
-        temp.numeroDeMiembros = this.numeroDeMiembros;
-        temp.costo += af.costo;
-        temp.beneficios.add(af.descripcion);
-        return temp;
+    public int CustomizeFeatures(AdditionalFeatures af){
+        int cost = this.costo += af.costo;
+        //this.beneficios.add(af.descripcion);
+        return cost;
     }
 
-    public Membership Discount(){
-        Membership temp = this;
-        if(temp.numeroDeMiembros>=2){
-            temp.costo -= temp.costo*0.1;
-        }
-        return temp;
+    public double Discount(int valor){
+        double cost=valor - (valor*0.1);
+        return cost;
     }
 
-    public void setNumberOfMembers(int numero){
-        this.numeroDeMiembros = numero;
+    public int costForMember(int numero){
+        int result = numero*this.costo;
+        return result;
     }
+
+
 }

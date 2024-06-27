@@ -9,4 +9,9 @@ public class AdditionalFeatures {
         this.costo = costo;
     }
 
+    @Override
+    public String toString() {
+        return "descripcion=" + descripcion + ", costo=" + costo;
+    }
+
 }
