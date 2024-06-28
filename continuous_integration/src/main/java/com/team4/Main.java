@@ -10,20 +10,14 @@ public class Main {
     static ArrayList<String> beneficiosFamilia = new ArrayList<>();
 
     public static void main(String[] args) {
-        beneficiosBasic.add("Acceso a áreas comunes");
-        beneficiosBasic.add("Descuentos en eventos");
-        beneficiosPremium.add("Acceso ilimitado a todas las áreas");
-        beneficiosPremium.add("Descuentos exclusivos en servicios");
-        beneficiosFamilia.add("Asistencia personalizada");
-        beneficiosFamilia.add("Acceso gratuito para familiares adicionales");
+        
+        
+        
+        
 
-        BasicMembership basicMembership = new BasicMembership(20, beneficiosBasic, 0);
-        PremiunMembership premiumMembership = new PremiunMembership(40, beneficiosPremium, 0);
-        FamilyMembership familyMembership = new FamilyMembership(60, beneficiosFamilia, 0);
-
-        AdditionalFeatures personalTraining = new AdditionalFeatures("Personal training sessions", 40);
-        AdditionalFeatures groupClasses = new AdditionalFeatures("Group classes", 40);
-
+        AdditionalFeatures personalTraining = new AdditionalFeatures("Personal training sessions", 20);
+        AdditionalFeatures groupClasses = new AdditionalFeatures("Group classes", 30);
+    
         Scanner scanner = new Scanner(System.in);
         int choice;
 
@@ -33,23 +27,25 @@ public class Main {
         System.out.println("2. Premium Membership");
         System.out.println("3. Family Membership");
         System.out.println("4. Exit");
-        System.out.print("Ingresa tu elección: ");
+        System.out.print("Ingresa tu elecci?n: ");
 
         choice = scanner.nextInt();
         scanner.nextLine();
         switch (choice) {
             case 1:
-                System.out.println("¿Cuántos se van a registrar?");
+                
+                System.out.println("?Cu?ntos se van a registrar?");
                 int numero = scanner.nextInt();
                 scanner.nextLine();
+                BasicMembership basicMembership = new BasicMembership(20, numero);
                 System.out.println("El valor base a pagar es de: " + basicMembership.costForMember(numero));
-                System.out.println("¿Desea agregar más caracteristicas? (y/n)");
+                System.out.println("?Desea agregar m?s caracteristicas? (y/n)");
                 String caracteristicas = scanner.next();
                 int eleccion;
                 int nuevoValor = 0;
                 if (caracteristicas.equals("y")) {
                     do {
-                        System.out.println("Listado de características adicionales:");
+                        System.out.println("Listado de caracter?sticas adicionales:");
                         System.out.println("1. Personal training sessions");
                         System.out.println("2. Group classes");
                         System.out.println("3. Exit");
@@ -57,13 +53,15 @@ public class Main {
                         scanner.nextLine();
                         switch (eleccion) {
                             case 1:
+                                basicMembership.additionalFeatures.add(personalTraining);
                                 nuevoValor = basicMembership.CustomizeFeatures(personalTraining);
                                 break;
                             case 2:
+                                basicMembership.additionalFeatures.add(groupClasses);
                                 nuevoValor = basicMembership.CustomizeFeatures(groupClasses);
                                 break;
                             case 3:
-                                System.out.println("Exiting... Thank you!");
+                                System.out.println("Saliendo de la eleccion de caracteristicas");
                                 break;
                             default:
                                 System.out.println("Invalid choice. Please enter a number between 1 and 3.");
@@ -71,67 +69,109 @@ public class Main {
                     } while (eleccion != 3);
                     System.out.println("El valor a pagar junto con las caracteristicas adicionales es " + nuevoValor);
                 }
-                double valorTotal = 0;
                 if (numero >= 2) {
-                    System.out.println(
-                            "Dado que serán mas de 2 personas en registrase se aplicará un descuento del 10%");
-                    valorTotal = basicMembership.Discount(nuevoValor);
+                    System.out.println("Dado que ser?n mas de 2 personas en registrase se aplicar? un descuento del 10%");
+                    nuevoValor = (int) basicMembership.Discount(nuevoValor);
                 }
-                System.out.println("Su total a pagar seria: " + valorTotal);
+                if(nuevoValor>400){
+                    nuevoValor-=50;
+                    basicMembership.descuento+=50;
+                }
+                else if(nuevoValor>200){
+                    nuevoValor-=20;
+                    basicMembership.descuento+=20;
+                }
+                System.out.println("Su total a pagar seria: " + nuevoValor);
+                System.out.println("Su membresia escogida es la siguiente: ");
+                ConfirmMembershipDetails(basicMembership,nuevoValor,scanner);
                 break;
             case 2:
-                System.out.println("¿Cuántos se van a registrar?");
+
+                AdditionalFeatures premiumFacilities = new AdditionalFeatures("Access to exclusive gym facilities", 80);
+                AdditionalFeatures premiumPrograms = new AdditionalFeatures("Specialized training programs", 120);
+                System.out.println("?Cu?ntos se van a registrar?");
                 int numero2 = scanner.nextInt();
                 scanner.nextLine();
+                PremiunMembership premiumMembership = new PremiunMembership(40, numero2);
                 System.out.println("El valor base a pagar es de: " + premiumMembership.costForMember(numero2));
-                System.out.println("¿Desea agregar más caracteristicas? (y/n)");
+                System.out.println("?Desea agregar m?s caracteristicas? (y/n)");
                 String caracteristicas2 = scanner.next();
+                int nPremium = 0;
                 int eleccion2;
                 int nuevoValor2 = 0;
                 if (caracteristicas2.equals("y")) {
                     do {
-                        System.out.println("Listado de características adicionales:");
+                        System.out.println("Listado de caracter?sticas adicionales:");
                         System.out.println("1. Personal training sessions");
                         System.out.println("2. Group classes");
-                        System.out.println("3. Exit");
+                        System.out.println("3. "+premiumFacilities.descripcion);
+                        System.out.println("4. "+premiumPrograms.descripcion);
+                        System.out.println("5. Exit");
                         eleccion2 = scanner.nextInt();
                         scanner.nextLine();
                         switch (eleccion2) {
                             case 1:
+                                premiumMembership.additionalFeatures.add(personalTraining);
                                 nuevoValor2 = premiumMembership.CustomizeFeatures(personalTraining);
                                 break;
                             case 2:
+                                premiumMembership.additionalFeatures.add(groupClasses);
                                 nuevoValor2 = premiumMembership.CustomizeFeatures(groupClasses);
                                 break;
                             case 3:
-                                System.out.println("Exiting... Thank you!");
+                                nPremium+=1;
+                                premiumMembership.additionalFeatures.add(premiumFacilities);
+                                nuevoValor2 = premiumMembership.CustomizeFeatures(premiumFacilities);
+                                break;
+                            case 4:
+                                nPremium+=1;
+                                premiumMembership.additionalFeatures.add(premiumPrograms);
+                                nuevoValor2 = premiumMembership.CustomizeFeatures(premiumPrograms);
+                                break;        
+                            case 5:
+                                System.out.println("Saliendo de la eleccion de caracteristicas");
                                 break;
                             default:
-                                System.out.println("Invalid choice. Please enter a number between 1 and 3.");
+                                System.out.println("Invalid choice. Please enter a number between 1 and 5.");
                         }
-                    } while (eleccion2 != 3);
+                    } while (eleccion2 != 5);
                     System.out.println("El valor a pagar junto con las caracteristicas adicionales es " + nuevoValor2);
                 }
-                double valorTotal2 = 0;
                 if (numero2 >= 2) {
                     System.out.println(
-                            "Dado que serán mas de 2 personas en registrase se aplicará un descuento del 10%");
-                    valorTotal2 = premiumMembership.Discount(nuevoValor2);
+                            "Dado que ser?n mas de 2 personas en registrase se aplicar? un descuento del 10%");
+                    nuevoValor2 = (int) premiumMembership.Discount(nuevoValor2);
                 }
-                System.out.println("Su total a pagar seria: " + valorTotal2);
+                if(nPremium >= 1){
+                    System.out.println("Se realizara un recargo del 15% por las adiciones premium");
+                    nuevoValor2 = (int) premiumMembership.Charge(nuevoValor2);
+                }
+                if(nuevoValor2>400){
+                    premiumMembership.descuento+=50;
+                    nuevoValor2-=50;
+                }
+                else if(nuevoValor2>200){
+                    premiumMembership.descuento+=20;
+                    nuevoValor2-=20;
+                }
+                System.out.println("Su total a pagar seria: " + nuevoValor2);
+                System.out.println("Su membresia escogida es la siguiente: ");
+                ConfirmMembershipDetails(premiumMembership,nuevoValor2,scanner);
                 break;
             case 3:
-                System.out.println("¿Cuántos se van a registrar?");
+
+                System.out.println("?Cu?ntos se van a registrar?");
                 int numero3 = scanner.nextInt();
                 scanner.nextLine();
+                FamilyMembership familyMembership = new FamilyMembership(60, numero3);
                 System.out.println("El valor base a pagar es de: " + familyMembership.costForMember(numero3));
-                System.out.println("¿Desea agregar más caracteristicas? (y/n)");
+                System.out.println("?Desea agregar m?s caracteristicas? (y/n)");
                 String caracteristicas3 = scanner.next();
                 int eleccion3;
                 int nuevoValor3 = 0;
                 if (caracteristicas3.equals("y")) {
                     do {
-                        System.out.println("Listado de características adicionales:");
+                        System.out.println("Listado de caracter?sticas adicionales:");
                         System.out.println("1. Personal training sessions");
                         System.out.println("2. Group classes");
                         System.out.println("3. Exit");
@@ -145,7 +185,7 @@ public class Main {
                                 nuevoValor3 = familyMembership.CustomizeFeatures(groupClasses);
                                 break;
                             case 3:
-                                System.out.println("Exiting... Thank you!");
+                                System.out.println("Saliendo de la eleccion de caracteristicas");
                                 break;
                             default:
                                 System.out.println("Invalid choice. Please enter a number between 1 and 3.");
@@ -153,13 +193,26 @@ public class Main {
                     } while (eleccion3 != 3);
                     System.out.println("El valor a pagar junto con las caracteristicas adicionales es " + nuevoValor3);
                 }
-                double valorTotal3 = 0;
+                
                 if (numero3 >= 2) {
                     System.out.println(
-                            "Dado que serán mas de 2 personas en registrase se aplicará un descuento del 10%");
-                    valorTotal3 = familyMembership.Discount(nuevoValor3);
+                            "Dado que ser?n mas de 2 personas en registrase se aplicar? un descuento del 10%");
+                    nuevoValor3 = (int) familyMembership.Discount(nuevoValor3);
                 }
-                System.out.println("Su total a pagar seria: " + valorTotal3);
+                if(nuevoValor3>400){
+                    familyMembership.descuento+=50;
+                    nuevoValor3-=50;
+                    
+                }
+                else if(nuevoValor3>200){
+                    familyMembership.descuento+=20;
+                    nuevoValor3-=20;
+                }
+
+                System.out.println("Su total a pagar seria: " + nuevoValor3);
+                System.out.println("Su membresia escogida es la siguiente: ");
+                ConfirmMembershipDetails(familyMembership,nuevoValor3,scanner);
+
                 break;
             case 4:
                 System.out.println("Exiting... Thank you!");
@@ -171,5 +224,33 @@ public class Main {
         System.out.println(); // Empty line for spacing
 
         scanner.close();
+        
+    }
+
+    public static void ConfirmMembershipDetails(Membership m, int costoFinal, Scanner sc){
+        
+            System.out.println("Membresia "+m.tipo);
+            System.out.println("Caracteristicas adicionales:");
+            for(AdditionalFeatures af:m.additionalFeatures){
+                System.out.println(af.descripcion);
+            }
+            System.out.println("El costo final es de "+costoFinal);
+            System.out.println("El descuento total fue de: "+m.descuento);
+            System.out.println("Desea confirmar su membresia?(y/n)");
+            String opcion;
+            opcion = sc.next();
+            sc.nextLine();
+            switch (opcion) {
+                case "y":
+                    System.out.println("Su membresia ha sido confirmada");
+                    break;
+                case "n":
+                    System.out.println("Su membresia ha sido cancelada");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Please select yes or no");
+            }
+
+            sc.close();
     }
 }

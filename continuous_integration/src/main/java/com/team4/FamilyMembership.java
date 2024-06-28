@@ -1,12 +1,12 @@
 package com.team4;
 
-import java.util.ArrayList;
-
 public class FamilyMembership extends Membership{
     
-    public FamilyMembership(int costo, ArrayList<String> beneficios, int numeroDeMiembros) {
-        super(costo, beneficios, numeroDeMiembros);
-
+    public FamilyMembership(int costo, int numeroDeMiembros) {
+        super(costo, numeroDeMiembros);
+        this.beneficios.add("Asistencia personalizada");
+        this.beneficios.add("Acceso gratuito para familiares adicionales");
+        this.tipo="Family";
     }
 
 

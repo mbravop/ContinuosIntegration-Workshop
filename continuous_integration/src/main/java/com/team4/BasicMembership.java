@@ -1,11 +1,12 @@
 package com.team4;
 
-import java.util.ArrayList;
-
 public class BasicMembership extends Membership{
     
-    public BasicMembership(int costo, ArrayList<String> beneficios, int numeroDeMiembros) {
-        super(costo, beneficios, numeroDeMiembros);
+    public BasicMembership(int costo, int numeroDeMiembros) {
+        super(costo,numeroDeMiembros);
+        this.beneficios.add("Acceso a ?reas comunes");
+        this.beneficios.add("Descuentos en eventos");
+        this.tipo="Basic";
     }
 
 

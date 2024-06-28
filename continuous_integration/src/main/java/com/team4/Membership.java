@@ -4,12 +4,14 @@ import java.util.ArrayList;
 
 public class Membership{
     public int costo;
-    public ArrayList<String> beneficios;
+    public ArrayList<String> beneficios = new ArrayList<>();
     public int numeroDeMiembros; 
+    public ArrayList<AdditionalFeatures> additionalFeatures = new ArrayList<>();
+    public String tipo;
+    public int descuento=0;
 
-    public Membership(int costo, ArrayList<String> beneficios, int numeroDeMiembros){
+    public Membership(int costo, int numeroDeMiembros){
         this.costo = costo;
-        this.beneficios = beneficios;
         this.numeroDeMiembros = numeroDeMiembros;
     }
 
@@ -20,7 +22,9 @@ public class Membership{
     }
 
     public double Discount(int valor){
+        descuento+=valor*0.1;
         double cost=valor - (valor*0.1);
+        
         return cost;
     }
 
@@ -29,5 +33,9 @@ public class Membership{
         return result;
     }
 
+    public double Charge(int valor){
+        double cost=valor + (valor*0.15);
+        return cost;
+    }
 
 }
