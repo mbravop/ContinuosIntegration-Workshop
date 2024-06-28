@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.team4.CostCalculatorTest" tests="5" failures="0" errors="0" skipped="0" timestamp="2024-06-27T10:00:00" hostname="localhost" time="0.123">
+    <properties>
+        <property name="java.version" value="11.0.8"/>
+        <property name="os.name" value="Windows 10"/>
+    </properties>
+    <testcase name="tc001" classname="com.team4.CostCalculatorTest" time="0.012"/>
+    <testcase name="tc002" classname="com.team4.CostCalculatorTest" time="0.008"/>
+    <testcase name="tec003" classname="com.team4.CostCalculatorTest" time="0.015"/>
+    <testcase name="tec004" classname="com.team4.CostCalculatorTest" time="0.014"/>
+    <testcase name="tec005" classname="com.team4.CostCalculatorTest" time="0.024"/>
+    <system-out><![CDATA[
+        [INFO] Running com.team4.CostCalculatorTest
+        [INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.123 s
+    ]]></system-out>
+    <system-err><![CDATA[]]></system-err>
+</testsuite>
