@@ -15,13 +15,13 @@ public class Membership{
         this.numeroDeMiembros = numeroDeMiembros;
     }
 
-    public int CustomizeFeatures(AdditionalFeatures af){
+    public int customizeFeatures(AdditionalFeatures af){
         int cost = this.costo += af.costo;
         //this.beneficios.add(af.descripcion);
         return cost;
     }
 
-    public double Discount(int valor){
+    public double discount(int valor){
         descuento+=valor*0.1;
         double cost=valor - (valor*0.1);
         
@@ -33,7 +33,7 @@ public class Membership{
         return result;
     }
 
-    public double Charge(int valor){
+    public double charge(int valor){
         double cost=valor + (valor*0.15);
         return cost;
     }

@@ -54,11 +54,11 @@ public class Main {
                         switch (eleccion) {
                             case 1:
                                 basicMembership.additionalFeatures.add(personalTraining);
-                                nuevoValor = basicMembership.CustomizeFeatures(personalTraining);
+                                nuevoValor = basicMembership.customizeFeatures(personalTraining);
                                 break;
                             case 2:
                                 basicMembership.additionalFeatures.add(groupClasses);
-                                nuevoValor = basicMembership.CustomizeFeatures(groupClasses);
+                                nuevoValor = basicMembership.customizeFeatures(groupClasses);
                                 break;
                             case 3:
                                 System.out.println("Saliendo de la eleccion de caracteristicas");
@@ -71,7 +71,7 @@ public class Main {
                 }
                 if (numero >= 2) {
                     System.out.println("Dado que ser?n mas de 2 personas en registrase se aplicar? un descuento del 10%");
-                    nuevoValor = (int) basicMembership.Discount(nuevoValor);
+                    nuevoValor = (int) basicMembership.discount(nuevoValor);
                 }
                 if(nuevoValor>400){
                     nuevoValor-=50;
@@ -112,21 +112,21 @@ public class Main {
                         switch (eleccion2) {
                             case 1:
                                 premiumMembership.additionalFeatures.add(personalTraining);
-                                nuevoValor2 = premiumMembership.CustomizeFeatures(personalTraining);
+                                nuevoValor2 = premiumMembership.customizeFeatures(personalTraining);
                                 break;
                             case 2:
                                 premiumMembership.additionalFeatures.add(groupClasses);
-                                nuevoValor2 = premiumMembership.CustomizeFeatures(groupClasses);
+                                nuevoValor2 = premiumMembership.customizeFeatures(groupClasses);
                                 break;
                             case 3:
                                 nPremium+=1;
                                 premiumMembership.additionalFeatures.add(premiumFacilities);
-                                nuevoValor2 = premiumMembership.CustomizeFeatures(premiumFacilities);
+                                nuevoValor2 = premiumMembership.customizeFeatures(premiumFacilities);
                                 break;
                             case 4:
                                 nPremium+=1;
                                 premiumMembership.additionalFeatures.add(premiumPrograms);
-                                nuevoValor2 = premiumMembership.CustomizeFeatures(premiumPrograms);
+                                nuevoValor2 = premiumMembership.customizeFeatures(premiumPrograms);
                                 break;        
                             case 5:
                                 System.out.println("Saliendo de la eleccion de caracteristicas");
@@ -140,11 +140,11 @@ public class Main {
                 if (numero2 >= 2) {
                     System.out.println(
                             "Dado que ser?n mas de 2 personas en registrase se aplicar? un descuento del 10%");
-                    nuevoValor2 = (int) premiumMembership.Discount(nuevoValor2);
+                    nuevoValor2 = (int) premiumMembership.discount(nuevoValor2);
                 }
                 if(nPremium >= 1){
                     System.out.println("Se realizara un recargo del 15% por las adiciones premium");
-                    nuevoValor2 = (int) premiumMembership.Charge(nuevoValor2);
+                    nuevoValor2 = (int) premiumMembership.charge(nuevoValor2);
                 }
                 if(nuevoValor2>400){
                     premiumMembership.descuento+=50;
@@ -179,10 +179,10 @@ public class Main {
                         scanner.nextLine();
                         switch (eleccion3) {
                             case 1:
-                                nuevoValor3 = familyMembership.CustomizeFeatures(personalTraining);
+                                nuevoValor3 = familyMembership.customizeFeatures(personalTraining);
                                 break;
                             case 2:
-                                nuevoValor3 = familyMembership.CustomizeFeatures(groupClasses);
+                                nuevoValor3 = familyMembership.customizeFeatures(groupClasses);
                                 break;
                             case 3:
                                 System.out.println("Saliendo de la eleccion de caracteristicas");
@@ -197,7 +197,7 @@ public class Main {
                 if (numero3 >= 2) {
                     System.out.println(
                             "Dado que ser?n mas de 2 personas en registrase se aplicar? un descuento del 10%");
-                    nuevoValor3 = (int) familyMembership.Discount(nuevoValor3);
+                    nuevoValor3 = (int) familyMembership.discount(nuevoValor3);
                 }
                 if(nuevoValor3>400){
                     familyMembership.descuento+=50;
