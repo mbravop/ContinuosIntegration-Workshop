@@ -71,4 +71,6 @@ public class CostCalculator {
         assertEquals(601,costoTotal);
 
     }
+
+    
 }
